@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#050505">
+    <title>Second Brain OS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              nd: {
+                black: '#050505', 
+                white: '#f5f5f5',
+                red: 'var(--color-accent)', 
+                gray: '#262626',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['Space Mono', 'monospace'],
+            },
+            backgroundImage: {
+              'dot-pattern': 'radial-gradient(#262626 1px, transparent 1px)',
+              'grid-pattern': 'linear-gradient(#262626 1px, transparent 1px), linear-gradient(90deg, #262626 1px, transparent 1px)',
+              'lines-pattern': 'linear-gradient(to bottom, #262626 1px, transparent 1px)',
+            },
+            backgroundSize: {
+              'dot-pattern': '20px 20px',
+              'grid-pattern': '40px 40px',
+              'lines-pattern': '100% 20px',
+            },
+            animation: {
+              'window-in': 'window-in 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards',
+              'fade-up': 'fade-in-up 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards',
+              'cursor-blink': 'cursor-blink 1s step-end infinite',
+            },
+            transitionTimingFunction: {
+              'expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --color-accent: #eb0000; 
+      }
+      
+      body {
+        background-color: #050505;
+        color: #f5f5f5;
+        overflow: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overscroll-behavior: none; /* Prevent pull-to-refresh on mobile */
+      }
+
+      /* Global Selection Color */
+      ::selection {
+        background: var(--color-accent);
+        color: #fff;
+      }
+
+      /* Sleek Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 3px;
+        border: 2px solid #050505; /* Creates padding effect */
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-accent); 
+      }
+
+      /* Custom Animations */
+      @keyframes window-in {
+        0% { opacity: 0; transform: scale(0.96) translateY(15px); }
+        100% { opacity: 1; transform: scale(1) translateY(0); }
+      }
+
+      @keyframes fade-in-up {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes cursor-blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      /* Animation Kill Switch */
+      body.no-animations *, 
+      body.no-animations *::before, 
+      body.no-animations *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      /* Glassmorphism System */
+      .window-glass {
+        background-color: #050505; 
+        transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+      }
+
+      body.enable-glass .window-glass {
+        background-color: rgba(5, 5, 5, 0.95) !important;
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+      
+      body.enable-glass .sidebar-glass {
+         background-color: rgba(5, 5, 5, 0.8) !important;
+         backdrop-filter: blur(16px);
+      }
+
+      /* Utility */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+      .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "firebase/": "https://aistudiocdn.com/firebase@^12.6.0/",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.32.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
